@@ -13,16 +13,16 @@ function calculateLateFee(daysLate, ratePerDay) {
 }
 ```
 
-* **1-Day Grace Period (`if (daysLate <= 1) return 0;`)**: Implemented by **Clone A** in Task 1 to waive fees for items returned within a 1-day grace window.
-* **Rounding Logic (`Math.round(...)`)**: Implemented by **Clone B** in Task 2 to replace truncation with standard nearest-integer rounding.
-* **$1 Minimum Fee (`fee = Math.max(1, fee);`)**: Implemented by **Clone A** in Task 6 to ensure that any overdue return past the grace period incurs at least a baseline $1 charge.
-* **$20 Fee Cap (`return Math.min(fee, 20);`)**: Implemented by **Clone C** in Task 4 to restrict the total late fee from exceeding a $20 ceiling.
+* **1-Day Grace Period (`if (daysLate <= 1) return 0;`)**: Implemented by **Clone A** in Task 1 to waive fees for returns within one day.
+* **Rounding Logic (`Math.round(...)`)**: Implemented by **Clone B** in Task 2 to replace truncation with nearest-integer rounding.
+* **$1 Minimum Fee (`fee = Math.max(1, fee);`)**: Implemented by **Clone A** in Task 6 to ensure any late return past the grace period incurs at least a baseline $1 charge.
+* **$20 Fee Cap (`return Math.min(fee, 20);`)**: Implemented by **Clone C** in Task 4 to restrict the maximum late fee from exceeding $20.
 
 ---
 
 ## 2. Two-Way vs. Three-Way Conflict Comparison
 
-Task 3 involved a two-way conflict between two parallel branches originating from the exact same base commit (Clone A's grace period vs. Clone B's rounding). In Task 5, Clone C faced a three-way conflict where the remote branch had already undergone a prior merge combining two independent changes, while Clone C introduced a third feature ($20 cap). This was more complex because Clone C had to resolve multiple layers of upstream history at once, ensuring the correct logical sequence of all three business rules without discarding earlier resolutions.
+Task 3 involved a two-way conflict between two branches originating from the exact same base commit (Clone A's grace period vs. Clone B's rounding). In Task 5, Clone C faced a three-way conflict where the remote branch had already undergone a prior merge combining two independent changes, while Clone C introduced a third feature ($20 cap). This was harder because Clone C had to resolve multiple layers of upstream history at once, ensuring the correct logical sequence of all three business rules without discarding earlier resolutions.
 
 ---
 
